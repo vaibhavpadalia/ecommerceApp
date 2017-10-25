@@ -1,0 +1,29 @@
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Raleway');
+</style>
+<header>
+  <h1>Assignment 3: Node and Angular Integration</h1>
+</header>
+<ul>
+  <li>
+      <a [routerLink]="['/welcome']"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Welcome</a>
+  </li>
+  <ng-template [ngIf]="!service.isLoggedIn()">
+    <li>
+      <a [routerLink]="['/login']">
+        <span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Login</a>
+    </li>
+    </ng-template>
+    <ng-template [ngIf]="service.isLoggedIn()">
+    <li>
+      <a [routerLink]="['/products']">
+        <span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;Product
+      </a>
+    </li>
+    <li>
+       <a (click)="logout()">
+         <span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Log Out
+        </a>
+    </li>
+    </ng-template>
+</ul>

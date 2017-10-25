@@ -1,0 +1,90 @@
+<br><br>
+<div class="container size1" style="float:left;">
+  <div class="row">
+    <div class="col-md-6">
+      <table>
+      <tr *ngFor="let p of productInfo">
+      <td class="col-sm-6 col-md-4" >
+          <div class="thumbnail">
+            <h4 class="text-center">
+              <span class="label label-info">{{p.p_head}}</span>
+            </h4>
+            <img src={{p.p_img}} width="200px" height="400px" class="img-responsive">
+            <div class="caption">
+              <div class="row">
+                <div class="col-md-6 col-xs-6">
+                  <h4>PID:{{p.productId}}</h4>
+                  <h3>{{p.productName}}</h3>
+                </div>
+                <div class="col-md-6 col-xs-6 price">
+                  <h4>
+                    <label>${{p.price}}</label>
+                  </h4>
+                </div>
+              </div>
+              <p>{{p.description}}</p>
+              <div class="row">
+                <div class="col-md-6">
+                  <a class="btn btn-primary btn-product">
+                    <span class="glyphicon glyphicon-thumbs-up"></span> Like</a>
+                </div>
+                <br><br>
+                <div class="col-md-8">
+                  <button class="btn btn-success btn-product" (click)="addToCart(p.productId)">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>Add To Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </table>
+      <br>
+    </div>
+  </div>
+</div>
+<div class="container size" style="float:right;">
+  <h2 style="text-align:center;">Cart Page</h2>
+  <table id="cart" class="table table-hover table-condensed">
+    <thead>
+      <tr>
+        <th style="width:50%">Product</th>
+        <th style="width:10%">Price</th>
+        <th style="width:22%" class="text-center">P. ID</th>
+        <th style="width:10%"></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let s of selectedItems">
+      <tr>
+        <td data-tr="Product">
+          <div class="row"> 
+            <div class="col-sm-7">
+              <h4 class="nomargin">{{s.productName}}</h4>
+            </div>
+          </div>
+        </td>
+        <td data-th="Price">{{s.price}}</td>
+        <td data-th="P.ID" class="text-center">{{s.productId}}</td>
+        <td>
+        </td>
+          <td class="actions" data-th="">
+            <button class="btn btn-danger btn-sm" (click)="removeFromCart(s.productId)">
+              <i class="glyphicon glyphicon-remove"></i>
+            </button>
+          </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2" class="hidden-xs"></td>
+        <td class="hidden-xs text-center">
+          <strong>Total ${{total}}</strong>
+        </td>
+        <td>
+          <button class="btn btn-success btn-block" (click)="addPrice()">Checkout</button>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+<br>

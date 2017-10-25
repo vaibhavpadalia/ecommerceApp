@@ -1,0 +1,70 @@
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Aldrich');
+</style>
+
+<body>
+  <div class="panel-heading">
+    <div class="panel-title text-center">
+      <h1 class="title">SignUp Form</h1>
+      <hr />
+    </div>
+  </div>
+  <div class="main-login main-center">
+    <form class="form-horizontal" (submit)="onSignup(email.value,name.value,password.value,confirm.value)">
+
+      <div class="form-group">
+        <label for="name" class="cols-sm-2 control-label">Your Name</label><br><br>
+        <div class="cols-sm-10">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class=" glyphicon glyphicon-user"></i>
+            </span>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" #name/>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email" class="cols-sm-2 control-label">Your Email</label><br><br>
+        <div class="cols-sm-10">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="glyphicon glyphicon-envelope"></i>
+            </span>
+            <input type="email" class="form-control" name="email" id="email" placeholder="Enter your Email" #email />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password" class="cols-sm-2 control-label">Password</label><br><br>
+        <div class="cols-sm-10">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="glyphicon glyphicon-asterisk"></i>
+            </span>
+            <input type="password" class="form-control" name="password" #password id="password" placeholder="Enter your Password"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label><br><br>
+        <div class="cols-sm-10">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="glyphicon glyphicon-asterisk"></i>
+            </span>
+            <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm your Password" #confirm />
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="form-group ">
+        <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+      </div>
+
+    </form>
+  </div>
+<br><br>
+</body>
