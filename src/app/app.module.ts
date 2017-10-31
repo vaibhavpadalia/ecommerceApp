@@ -10,7 +10,6 @@ import { HttpModule } from '@angular/http';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { FacebookModule } from 'ngx-facebook';
 import { AuthGuard } from './auth.guard';
-import { AuthService, AppGlobals } from 'angular2-google-login';
 
 
 @NgModule({
@@ -28,7 +27,7 @@ import { AuthService, AppGlobals } from 'angular2-google-login';
     HttpModule,
     FacebookModule.forRoot()
   ],
-  providers: [AuthenticationServiceService, AuthGuard, AuthService],
+  providers: [AuthenticationServiceService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
