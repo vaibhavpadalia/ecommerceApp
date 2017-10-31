@@ -8,8 +8,9 @@ import { FormsModule } from '@angular/forms';
 import { AuthenticationServiceService } from './authentication-service.service';
 import { HttpModule } from '@angular/http';
 import { ProductPageComponent } from './product-page/product-page.component';
-import { CartOptionComponent } from './cart-option/cart-option.component';
 import { FacebookModule } from 'ngx-facebook';
+import { AuthGuard } from './auth.guard';
+import { AuthService, AppGlobals } from 'angular2-google-login';
 
 
 @NgModule({
@@ -18,8 +19,7 @@ import { FacebookModule } from 'ngx-facebook';
     HeaderComponent,
     FooterComponent,
     routingComponents,
-    ProductPageComponent,
-    CartOptionComponent
+    ProductPageComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +28,7 @@ import { FacebookModule } from 'ngx-facebook';
     HttpModule,
     FacebookModule.forRoot()
   ],
-  providers: [AuthenticationServiceService],
+  providers: [AuthenticationServiceService, AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -54,7 +54,7 @@ exports.getAllProducts = (req, res) => {
     })
 }
 
-exports.updateTotalCost = function (req, res) {
+exports.updateTotalCost = (req, res) => {
     console.log("In update");
     var id = req.params.email;
     Signup.findOne({ email: id },(error, data) => {

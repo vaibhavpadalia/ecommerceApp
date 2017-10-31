@@ -14,7 +14,8 @@
       </div>
       <br>
       <div class="social" style="text-align:center">
-      Login Via: <i class="fa fa-facebook" (click)="FbLogin()">  </i>
+      Login Via: <a (click)="FbLogin()"><i class="fa fa-facebook">  </i> </a>
+      <!-- <a (click)="googleAuthenticate()"><i class="fa fa-google"> </i> </a> -->
       </div>
       <br><br>
       <a [routerLink]="['/signup']" class="text-center new-account">Create an account</a>
