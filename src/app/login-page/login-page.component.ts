@@ -9,6 +9,7 @@ import { FacebookService, InitParams, LoginResponse, LoginOptions } from 'ngx-fa
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
+  email= '';
   user: any = [];
   app;
   token: any; // Token is used for storing the token which is received when you have logged in
@@ -43,15 +44,14 @@ export class LoginPageComponent implements OnInit {
         this.fb.api('/me?fields=gender,first_name,last_name,email,picture')
           .then((res: any) => {
             this.userDetails = res;
-            console.log(this.userDetails);
+            console.log('this is res =' + res.email);  // For testing purpose only
+            this.email = res.email;
             this.userInfo = true;
-            // console.log(this.userDetails.email);
           });
           if (this.userDetails !== null) {
           this.router.navigate(['/products']);
-          this.service.email = 'facebookLogin';
-          // console.log(this.email);
-          // return this.service.email = this.email;
+          this.service.email = this.email;
+          return this.service.email = this.email;
           }
       })
       .catch(this.handleError);
