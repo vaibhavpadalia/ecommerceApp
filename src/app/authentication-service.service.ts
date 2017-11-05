@@ -11,8 +11,8 @@ export class AuthenticationServiceService {
     ({ email : email , name: name, password: password}));
   }
 
-  onLogin(email: string) {
-    return this.http.get('http://localhost:8888/api/v1/getUser/' + email);
+  onLogin(email: string, password: string) {
+    return this.http.get('http://localhost:8888/api/v1/getUser/' + email + '/' + password);
   }
 
   addPrice(price: number) {

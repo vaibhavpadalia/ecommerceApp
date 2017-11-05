@@ -4,6 +4,7 @@ var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
 mongoose.Promise = require('bluebird');   // To remove deprecation warning node 6676
 var cors = require('cors'); // To allow Cross-Origin Restrictions
+const bcrypt = require('bcrypt');
 
 mongoose.connect('mongodb://localhost:27017/assignment', { useMongoClient: true });
 

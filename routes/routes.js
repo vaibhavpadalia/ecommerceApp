@@ -9,7 +9,7 @@ router.route('/v1/createUser')
 router.route('/v1/getAllUsers')
       .get(controller.getAllUsers);
 
-router.route('/v1/getUser/:email')
+router.route('/v1/getUser/:email/:password')
     .get(controller.getUser);
 
 router.route('/v1/getAllProducts')

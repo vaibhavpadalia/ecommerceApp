@@ -18,14 +18,14 @@ export class LoginPageComponent implements OnInit {
   userInfo: boolean = false;
   constructor(private router: Router, private service: AuthenticationServiceService, private fb: FacebookService) { 
     let initParams: InitParams = {
-      appId: '199625333914464', // Should not be shared
+      appId: 'App Id', // Should not be shared
       cookie: true,  // enable cookies to allow the server to access  the session
       xfbml: true,  // parse social plugins on this page
       version: 'v2.8'
     };
     fb.init(initParams);
   }
-  FbLogin() {
+   FbLogin() {
     console.log('Inside fb login'); // Testing purpose only
     const loginOptions: LoginOptions = {
       enable_profile_selector: true,
@@ -33,7 +33,7 @@ export class LoginPageComponent implements OnInit {
       scope: 'user_posts,public_profile,user_friends,email,pages_show_list,publish_actions'
     };
 
-    this.fb.login(loginOptions)
+     this.fb.login(loginOptions)
       .then((res: LoginResponse) => {
         console.log('Logged in', res);
         this.data = res.authResponse.userID;
@@ -41,21 +41,23 @@ export class LoginPageComponent implements OnInit {
 
 
         // api for getting the specified fields.
-        this.fb.api('/me?fields=gender,first_name,last_name,email,picture')
+         this.fb.api('/me?fields=gender,first_name,last_name,email,picture')
           .then((res: any) => {
             this.userDetails = res;
-            console.log('this is res =' + res.email);  // For testing purpose only
-            this.email = res.email;
+            console.log('this is res = ' + res.email);  // For testing purpose only
             this.userInfo = true;
+            this.service.email = res.email;
+            this.service.onSignup(res.email, res.first_name + res.last_name, 'password')
+            .subscribe(response => console.log(response));
           });
           if (this.userDetails !== null) {
           this.router.navigate(['/products']);
-          this.service.email = this.email;
-          return this.service.email = this.email;
+          this.service.email = 'fblogin';
+          return this.service.email ;
           }
       })
       .catch(this.handleError);
-  }
+      }
 
   private handleError(error) {
     console.error('Error processing action', error);
@@ -64,18 +66,14 @@ export class LoginPageComponent implements OnInit {
   }
 
   login(email: string, password: string) {
-    this.service.onLogin(email)
+    this.service.onLogin(email, password)
     .subscribe(res => {
       this.user = JSON.parse(res.text());
-      if (this.user == null) {
-        console.log('Error occurred');
-        alert('Error occurred ');
-      } else if (this.user.password === password) {
+      console.log( this.user); // For testing purpose only
+       if (this.user !== null) {
         this.router.navigate(['/products']);
         this.service.email = this.user.email;
-        return this.service.email;
-      } else {
-        console.log('Error occurred');
+      } else  {
         alert('Error occurred');
       }
   });

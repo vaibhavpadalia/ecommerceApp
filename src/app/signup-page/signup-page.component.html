@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="main-login main-center">
-    <form class="form-horizontal" (ngSubmit)="onSignup(email.value,name.value,password.value,confirm.value)">
+    <form class="form-horizontal" ngNativeValidate (ngSubmit)="onSignup(email.value,name.value,password.value,confirm.value)">
 
       <div class="form-group">
         <label for="name" class="cols-sm-2 control-label">Your Name</label><br><br>
@@ -19,7 +19,7 @@
             <span class="input-group-addon">
               <i class=" glyphicon glyphicon-user"></i>
             </span>
-            <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" #name/>
+            <input type="text" class="form-control" placeholder="Enter your Name" required #name/>
           </div>
         </div>
       </div>
@@ -31,7 +31,7 @@
             <span class="input-group-addon">
               <i class="glyphicon glyphicon-envelope"></i>
             </span>
-            <input type="email" class="form-control" id="email" placeholder="Enter your Email" #email />
+            <input type="email" class="form-control" id="email" placeholder="Enter your Email" required #email />
           </div>
         </div>
       </div>
@@ -43,7 +43,7 @@
             <span class="input-group-addon">
               <i class="glyphicon glyphicon-asterisk"></i>
             </span>
-            <input type="password" class="form-control" name="password" #password id="password" placeholder="Enter your Password"/>
+            <input type="password" class="form-control" #password required placeholder="Enter your Password"/>
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@
             <span class="input-group-addon">
               <i class="glyphicon glyphicon-asterisk"></i>
             </span>
-            <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm your Password" #confirm />
+            <input type="password" class="form-control" placeholder="Confirm your Password" required #confirm />
           </div>
         </div>
       </div>
