@@ -18,7 +18,7 @@ export class LoginPageComponent implements OnInit {
   userInfo: boolean = false;
   constructor(private router: Router, private service: AuthenticationServiceService, private fb: FacebookService) {
     let initParams: InitParams = {
-      appId: '199625333914464', // Should not be shared
+      appId: 'Your app id here', // Should not be shared
       cookie: true,  // enable cookies to allow the server to access  the session
       xfbml: true,  // parse social plugins on this page
       version: 'v2.8'
