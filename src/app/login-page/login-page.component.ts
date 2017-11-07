@@ -16,9 +16,9 @@ export class LoginPageComponent implements OnInit {
   data;
   userDetails: Object;
   userInfo: boolean = false;
-  constructor(private router: Router, private service: AuthenticationServiceService, private fb: FacebookService) { 
+  constructor(private router: Router, private service: AuthenticationServiceService, private fb: FacebookService) {
     let initParams: InitParams = {
-      appId: 'App Id', // Should not be shared
+      appId: '199625333914464', // Should not be shared
       cookie: true,  // enable cookies to allow the server to access  the session
       xfbml: true,  // parse social plugins on this page
       version: 'v2.8'
@@ -47,7 +47,7 @@ export class LoginPageComponent implements OnInit {
             console.log('this is res = ' + res.email);  // For testing purpose only
             this.userInfo = true;
             this.service.email = res.email;
-            this.service.onSignup(res.email, res.first_name + res.last_name, 'password')
+            this.service.onSignup(res.email, res.first_name + ' ' + res.last_name, 'password')
             .subscribe(response => console.log(response));
           });
           if (this.userDetails !== null) {

@@ -15,7 +15,9 @@ exports.createUser = (req, res) => {
     });
     signup.save((error, response) => {
         if (error) {
-             res.json(error);
+             res.json({success : false,
+                        body: error
+            });
         }
         else {
             res.json({
@@ -44,7 +46,7 @@ exports.getUser = (req, res) => {
             return res.json(response);
         }
         else {
-            return res.json(error)
+            return res.json(error);
         }
     });
 }
@@ -71,7 +73,7 @@ exports.updateTotalCost = (req, res) => {
         data.updated_at = new Date();
         data.save((err, response) => {
             if (err) {
-                res.json(err);
+                res.send(err);
             }
             res.json(response);
         });
